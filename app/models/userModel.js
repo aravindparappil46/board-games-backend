@@ -26,7 +26,7 @@ User.register = function(new_user, result){
 
 // Login with valid creds
 User.login = function(login, result){
-	sql.query("SELECT * FROM users WHERE email = ?", login.email, function(err, res){
+	sql.query("SELECT * FROM users WHERE email = ? AND password = ?", [login.email, login.password], function(err, res){
 		if(err){
 			console.log("[UserModel] Error!", err);
 			result(err, null);
