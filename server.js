@@ -15,11 +15,14 @@ const mc = mysql.createConnection({
 });
 mc.connect();
 
+const cors = require('cors')
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json()); // supports JSON encoded bodies for POST
 app.use(express.urlencoded()); // supports URL encoded bodies
+app.use(cors())
 
 var routes = require('./app/routes/routes'); //importing route
 routes(app); //register the route
