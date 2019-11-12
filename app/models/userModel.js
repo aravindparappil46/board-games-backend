@@ -18,9 +18,25 @@ User.register = function(new_user, result){
 			result(err, null);
 		}
 		else{
-			console.log("[UserModel] Added new user", res.insertId);
+			console.log("[UserModel] Added new user with ID", res.insertId);
 			result(null, res.insertId);
 		}
 	});
 };
+
+// Login with valid creds
+User.login = function(login, result){
+	sql.query("SELECT * FROM users WHERE email = ?", login.email, function(err, res){
+		if(err){
+			console.log("[UserModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			console.log("[UserModel] Found User!", res);
+			result(null, res);
+		}
+	});
+};
+
+
 module.exports = User;

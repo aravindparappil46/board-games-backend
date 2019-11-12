@@ -12,3 +12,18 @@ exports.register = function (req, res) {
 		res.json(user);
 	});
 };
+
+ // Login with valid creds
+ exports.login = function(req, res) {
+ 	console.log("[UserCtrl] Trying to login with", req.body);
+ 	var login = new User(req.body);
+ 	User.login(login, function(err, login){
+ 		if(err)
+ 			res.send(err);
+ 		else
+ 			res.json(login);
+ 	});
+ }
+
+
+

@@ -1,10 +1,12 @@
 'use strict';
 module.exports = function(app) {
-  var userMgmt = require('../controllers/userCtrl');
+  var userCtrl = require('../controllers/userCtrl');
 
   // Routes
   app.route('/register')
-    .post(userMgmt.register);
- 
+    .post(userCtrl.register);
+  
+  app.route('/login')
+  	.post(userCtrl.login);
     
 };
