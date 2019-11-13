@@ -18,6 +18,9 @@ module.exports = function(app) {
   app.route('/deleteSession/:id')
   	.post(activeSessionsCtrl.deleteSession);
 
+  app.route('/getAllActiveSessions/:player1')
+  	.get(activeSessionsCtrl.getAllActiveSessions);
+
   app.route('/storeBoardState')	
   	.post(tttMovesCtrl.storeBoardState);
 

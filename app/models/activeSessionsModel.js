@@ -36,5 +36,20 @@ activeSessions.deleteSession = function(session_id, result){
 	});
 };
 
+activeSessions.getAllActiveSessions = function(player1, result){
+	console.log("[ActiveSessionModel] Sessions for player1 =", player1);
+	sql.query("SELECT * FROM active_sessions WHERE player_1 = ?", player1, function(err, res){
+		if(err){
+			console.log("[ActiveSessionModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			console.log("[ActiveSessionModel] player1 plays ",res);
+			result(null, res);
+		}
+	});
+};
+
+
 
 module.exports = activeSessions;

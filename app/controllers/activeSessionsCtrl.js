@@ -23,3 +23,14 @@ exports.deleteSession = function (req, res) {
 		res.json(as);
 	});
 };
+
+exports.getAllActiveSessions = function (req, res) {
+	console.log("{activeSessionCtrl} Getting Sessions for id = ", req.params.player1);
+	var player1 = req.params.player1
+	activeSessions.getAllActiveSessions(player1, function(err, as){
+		if(err)
+			res.send(err)
+
+		res.json(as);
+	});
+};
