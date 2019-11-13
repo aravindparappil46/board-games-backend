@@ -15,7 +15,13 @@ module.exports = function(app) {
   app.route('/newSession')
   	.post(activeSessionsCtrl.startNewSession);
 
+  app.route('/deleteSession/:id')
+  	.post(activeSessionsCtrl.deleteSession);
+
   app.route('/storeBoardState')	
   	.post(tttMovesCtrl.storeBoardState);
+
+  app.route('/deleteTTTMoves/:id')
+  	.post(tttMovesCtrl.deleteMoves);
     
 };

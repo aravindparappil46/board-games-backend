@@ -13,3 +13,13 @@ exports.startNewSession = function (req, res) {
 	});
 };
 
+// Delete game session
+exports.deleteSession = function (req, res) {
+	console.log("{activeSessionCtrl} Session id = ", req.params.id);
+	var session_id = req.params.id
+	activeSessions.deleteSession(session_id, function(err, as){
+		if(err)
+			res.send(err)
+		res.json(as);
+	});
+};

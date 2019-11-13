@@ -22,4 +22,19 @@ activeSessions.addSession = function(new_session, result){
 	});
 };
 
+activeSessions.deleteSession = function(session_id, result){
+	console.log("[ActiveSessionModel] Deleting session_id =", session_id);
+	sql.query("DELETE FROM active_sessions WHERE id = ?", session_id, function(err, res){
+		if(err){
+			console.log("[ActiveSessionModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			console.log("[ActiveSessionModel] Deleted record with session_id",session_id);
+			result(null, res.insertId);
+		}
+	});
+};
+
+
 module.exports = activeSessions;

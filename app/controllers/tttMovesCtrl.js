@@ -11,5 +11,13 @@ exports.storeBoardState = function (req, res) {
 			res.send(err)
 		res.json(as);
 	});
-};
+}
 
+exports.deleteMoves = function (req, res) {
+	var session_id_to_delete = parseInt(req.params.id);
+	tttMoves.deleteMoves(session_id_to_delete, function(err, done){
+		if(err)
+			res.send(err)
+		res.json(done);
+	});
+}

@@ -20,4 +20,19 @@ tttMoves.storeBoardState = function(new_board_state, result){
 	});
 };
 
+tttMoves.deleteMoves = function(session_id, result){
+	console.log("[tttMovesModel] Deleting all moves with session_id =", session_id);
+	sql.query("DELETE FROM ttt_moves WHERE session_id = ?", session_id, function(err, res){
+		if(err){
+			console.log("[tttMovesModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			console.log("[tttMovesModel] Deleted every record with session_id",session_id, res.insertId);
+			result(null, res.insertId);
+		}
+	});
+};
+
+
 module.exports = tttMoves;
