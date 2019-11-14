@@ -34,5 +34,18 @@ tttMoves.deleteMoves = function(session_id, result){
 	});
 };
 
+tttMoves.getLatestBoardState = function(session_id, result){
+	console.log("[tttMovesModel] Getting board for session_id =", session_id);
+	sql.query("SELECT * FROM ttt_moves WHERE session_id = ? ORDER BY id DESC LIMIT 1", session_id, function(err, res){
+		if(err){
+			console.log("[tttMovesModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			result(null, res);
+		}
+	});
+};
+
 
 module.exports = tttMoves;

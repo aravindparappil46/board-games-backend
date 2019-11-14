@@ -30,7 +30,6 @@ exports.getAllActiveSessions = function (req, res) {
 	activeSessions.getAllActiveSessions(player1, function(err, as){
 		if(err)
 			res.send(err)
-
 		res.json(as);
 	});
 };

@@ -21,3 +21,12 @@ exports.deleteMoves = function (req, res) {
 		res.json(done);
 	});
 }
+
+exports.getLatestBoardState = function (req, res) {
+	var session_id = parseInt(req.params.id);
+	tttMoves.getLatestBoardState(session_id, function(err, bs){
+		if(err)
+			res.send(err)
+		res.json(bs);
+	});
+}

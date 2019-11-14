@@ -26,5 +26,8 @@ module.exports = function(app) {
 
   app.route('/deleteTTTMoves/:id')
   	.post(tttMovesCtrl.deleteMoves);
+
+  app.route('/getLatestBoardState/:id')	
+  	.get(tttMovesCtrl.getLatestBoardState);
     
 };
