@@ -25,5 +25,16 @@ exports.register = function (req, res) {
  	});
  }
 
+ // List all registered users
+ exports.listUsers = function(req, res) {
+ 	console.log("[UserCtrl] Fetching all registered users", req.params.currUser);
+ 	User.listUsers(req.params.currUser, function(err, users){
+ 		if(err)
+ 			res.send(err);
+ 		else
+ 			res.json(users);
+ 	});
+ }
+
 
 

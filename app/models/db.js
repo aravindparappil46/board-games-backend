@@ -13,4 +13,9 @@ connection.connect(function(err) {
     if (err) throw err;
 });
 
+setInterval(function () {
+	console.log("Making a query!!!");
+    connection.query('SELECT 1');
+}, 300000);
+
 module.exports = connection;

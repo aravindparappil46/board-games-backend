@@ -12,6 +12,9 @@ module.exports = function(app) {
   app.route('/login')
   	.post(userCtrl.login);
 
+  app.route('/listUsers/:currUser')
+    .get(userCtrl.listUsers);
+
   app.route('/newSession')
   	.post(activeSessionsCtrl.startNewSession);
 

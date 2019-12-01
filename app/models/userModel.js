@@ -38,5 +38,16 @@ User.login = function(login, result){
 	});
 };
 
+User.listUsers = function(currUser, result){
+	sql.query("SELECT * FROM users WHERE email <> 'ai@ai.com' AND email <> ? ", currUser, function(err, res){
+		if(err){
+			console.log("[UserModel] Error!", err);
+			result(err, null);
+		}
+		else{
+			result(null, res);
+		}
+	});
+}
 
 module.exports = User;

@@ -15,6 +15,11 @@ const mc = mysql.createConnection({
 });
 mc.connect();
 
+setInterval(function () {
+	console.log("Making a query!!! Server.js");
+    mc.query('SELECT 1');
+}, 300000);
+
 const cors = require('cors')
 
 

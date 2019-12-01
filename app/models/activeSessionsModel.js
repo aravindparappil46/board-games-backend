@@ -38,7 +38,7 @@ activeSessions.deleteSession = function(session_id, result){
 
 activeSessions.getAllActiveSessions = function(player1, result){
 	console.log("[ActiveSessionModel] Sessions for player1 =", player1);
-	sql.query("SELECT * FROM active_sessions WHERE player_1 = ?", player1, function(err, res){
+	var query = sql.query("SELECT * FROM active_sessions WHERE player_1 = ? OR player_2 = ?", [player1,player1], function(err, res){
 		if(err){
 			console.log("[ActiveSessionModel] Error!", err);
 			result(err, null);
@@ -48,6 +48,7 @@ activeSessions.getAllActiveSessions = function(player1, result){
 			result(null, res);
 		}
 	});
+	console.log(query.sql);
 };
 
 
