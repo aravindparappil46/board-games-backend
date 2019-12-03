@@ -41,6 +41,6 @@ https.createServer({
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.cert')
 }, app)
-.listen(3000, function () {
+.listen(port, function () {
   console.log("[BoardGames] HTTPS NodeJS Server started on: " + port);
 });
