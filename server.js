@@ -4,6 +4,8 @@ const express = require('express'),
 app = express(),
 port = process.env.PORT || 3000;
 bodyParser = require('body-parser');
+var https = require('https');
+var fs = require('fs');
 
 const mysql = require('mysql');
 const mc = mysql.createConnection({
@@ -32,5 +34,13 @@ app.use(cors())
 var routes = require('./app/routes/routes'); //importing route
 routes(app); //register the route
 
-app.listen(port);
-console.log("[BoardGames] NodeJS Server started on: " + port);
+//app.listen(port);
+//console.log("[BoardGames] NodeJS Server started on: " + port);
+
+https.createServer({
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
+}, app)
+.listen(3000, function () {
+  console.log("[BoardGames] HTTPS NodeJS Server started on: " + port);
+});
